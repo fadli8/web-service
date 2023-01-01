@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <xsd:complexType name="operation">
+      <xsd:sequence/>
+      <xsd:attribute name="type" type="xsd:string"/>
+      <xsd:attribute name="date" type="xsd:dateTime"/>
+      <xsd:attribute name="montant" type="xsd:double" use="required"/>
+      <xsd:attribute name="description" type="xsd:string"/>
+   </xsd:complexType>
+   <xsd:complexType name="operations">
+      <xsd:sequence>
+         <xsd:element name="operation" type="operation" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="dateDebut" type="xsd:dateTime"/>
+      <xsd:attribute name="dateFin" type="xsd:dateTime"/>
+   </xsd:complexType>
+   <xsd:complexType name="releve">
+      <xsd:sequence>
+         <xsd:element name="dateReleve" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="Solde" type="xsd:double"/>
+         <xsd:element name="operations" type="operations" minOccurs="0"/>
+      </xsd:sequence>
+      <xsd:attribute name="RIB" type="xsd:string"/>
+   </xsd:complexType>
+   <xsd:element name="releve" type="releve"/>
+</xsd:schema>
